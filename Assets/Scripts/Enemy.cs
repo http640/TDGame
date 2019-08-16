@@ -47,12 +47,13 @@ public class Enemy : MonoBehaviour
         if (other.tag == "CheckPoint")
         {
             target += 1;
-            Debug.Log(target);
+            Debug.Log("target");
         }
         else if (other.tag == "Finish")
         {
-            Destroy(gameObject);
+            
             GameManager.instance.RemoveEnemyOnScreen();
+            Destroy(gameObject);
         }
     }
 }

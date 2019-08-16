@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7881866196574467421}
   - component: {fileID: 530403859487721123}
   - component: {fileID: 7379793937821554431}
+  - component: {fileID: -6990579035962007556}
   m_Layer: 9
   m_Name: Enemy1
   m_TagString: enemy
@@ -112,7 +113,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 7719797380960411051}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 1
+  m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -149,3 +150,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.29999962, y: 0.4384489}
   m_EdgeRadius: 0
+--- !u!114 &-6990579035962007556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7719797380960411051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9913dfac98e6e54798b89ed21e43c78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: 15
+  mainTower: {fileID: 5821597141788288634, guid: 9b579336a50f29c488ea237094f611c2,
+    type: 3}
+  wayPoints:
+  - {fileID: 7742606557845307184, guid: 31bc13b0ffb879745bab1e9d64cfa169, type: 3}
+  - {fileID: 4221941137025461432, guid: e938d41446dca85438371e553bb8c1c0, type: 3}
+  - {fileID: 1861582958389551215, guid: 8050575b4fdce7041b4b3b13aedac815, type: 3}
+  - {fileID: 7619414500151309327, guid: 5cb45e1e807d693429350745ec55e4e6, type: 3}
+  - {fileID: 3757403727396159135, guid: 7eec1fda3e0859047a20157ede8f4cfc, type: 3}
+  - {fileID: 3612355537164552042, guid: ef25f090117b9df4082494c3a7180a02, type: 3}
+  - {fileID: 1277392385051502316, guid: f24802266cfd8b44cbecbe49e7814457, type: 3}
+  - {fileID: 1450852055765353037, guid: 85766f07d0f02a340b440ef5b40f3a7e, type: 3}
+  - {fileID: 8149053956338058635, guid: 7b91206002b022c4a83fbcc881be0361, type: 3}
+  - {fileID: 3724543680003255177, guid: a2c0ec4d7667a8e42b1808414dab7dd2, type: 3}
+  - {fileID: 7189962087923745733, guid: 83f306d7e4af42c4bb2d5d3b9e642ee2, type: 3}
+  - {fileID: 4245662799341028333, guid: b53af36a8769c8d4291af0420a31545e, type: 3}
+  - {fileID: 6209514599452370118, guid: b9268efc880991b439a8b1383db5633f, type: 3}
+  - {fileID: 4068241340713921903, guid: 3d04f3f3df148a74c9d6be45745cb78d, type: 3}
+  - {fileID: 7021826477577327735, guid: 05294eaa9c3ea834e868ff27829dc707, type: 3}
+  navigationUpdate: 0.01
