@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int enemiesPerSpawn;
 
     private int enemiesOnScreen = 0;
+    const float spawnDelay = 0.5f;
 
     private void Awake()
     {
@@ -23,26 +24,29 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
-    void Start()
-    {
-        SpawnEnemy();   
-    }
 
-    void SpawnEnemy()
+    private void Start()
+    {
+        StartCoroutine(spawn());
+    }
+    IEnumerator spawn ()
     {
         if (enemiesPerSpawn > 0 && enemiesOnScreen < maxEnemiesOnScreen)
         {
-            for (int i=0; i<enemiesPerSpawn; ++i)
+            for (int i = 0; i < enemiesPerSpawn; ++i)
             {
                 if (enemiesOnScreen < maxEnemiesOnScreen)
-                    for (int j = enemiesOnScreen; j < maxEnemiesOnScreen; ++j)
-                    {
-                        GameObject newEnemy = Instantiate(enemies[1]) as GameObject;
-                        newEnemy.transform.position = spawnPoint.transform.position;
-                        enemiesOnScreen += 1;
-                    }
+                    
+                {
+                    GameObject newEnemy = Instantiate(enemies[1]) as GameObject;
+                    newEnemy.transform.position = spawnPoint.transform.position;
+                    enemiesOnScreen += 1;
+                }
 
             }
+            yield return new WaitForSeconds(spawnDelay);
+            StartCoroutine(spawn());
+
         }
     }
     public void RemoveEnemyOnScreen()
@@ -53,9 +57,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
