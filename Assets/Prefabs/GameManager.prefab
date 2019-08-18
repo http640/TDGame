@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5282594352811066446}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -43,12 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1bd533e7066584787cfb6dc2d5e87b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 5955595035094408292, guid: 2a5d2cf29ce882a4e8f62d20e94db25c,
-    type: 3}
+  spawnPoint: {fileID: 0}
   enemies:
   - {fileID: 7719797380960411051, guid: 8cdae0b88e79b2546bc3443bf3ccd75e, type: 3}
   - {fileID: 6357427952382317904, guid: 00817ead82c912844b187984f0a75561, type: 3}
   - {fileID: 1674880657807356550, guid: 2c490c2b86dcbd7429da493c5f369183, type: 3}
-  totalEnemies: 8
-  maxEnemiesOnScreen: 8
+  totalEnemies: 1
+  maxEnemiesOnScreen: 1
   enemiesPerSpawn: 1

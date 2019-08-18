@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singletons<GameManager>
 {
-    public static GameManager instance = null;
     public GameObject spawnPoint;
     public GameObject[] enemies;
     public int totalEnemies;
@@ -14,15 +13,7 @@ public class GameManager : MonoBehaviour
     private int enemiesOnScreen = 0;
     const float spawnDelay = 0.5f;
 
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else if (instance != null)
-            Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
-    }
+  
     // Start is called before the first frame update
 
     private void Start()
