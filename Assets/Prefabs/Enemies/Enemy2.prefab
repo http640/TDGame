@@ -163,6 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  MyPath: {fileID: 2537384667154481238, guid: 4e5f8dbc6965d264caa12c472b3efd4f, type: 3}
+  MyPath: {fileID: 0}
   Speed: 1
   MaxDistanceToGoal: 0.1
