@@ -27,7 +27,7 @@ public class FollowPath : MonoBehaviour
     #region Main Methods
     public void Start()
     {
-        MyPath.movingTo = 0;
+        /*MyPath.movingTo = 0;
         //Make sure there is a path assigned
         if (MyPath == null)
         {
@@ -50,7 +50,7 @@ public class FollowPath : MonoBehaviour
         }
 
         //Set the position of this object to the position of our starting point
-        transform.position = pointInPath.Current.position;
+        transform.position = pointInPath.Current.position;*/
     }
      
     //Update is called by Unity every frame
