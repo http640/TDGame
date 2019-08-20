@@ -29,6 +29,7 @@ public class FollowPath : MonoBehaviour
     {
         //MyPath.movingTo = 0;
         //Make sure there is a path assigned
+
         if (MyPath == null)
         {
             Debug.LogError("Movement Path cannot be null, I must have a path to follow.", gameObject);
