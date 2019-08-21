@@ -15,7 +15,7 @@ public class FollowPath : MonoBehaviour
     #region Public Variables
     public MovementType Type = MovementType.MoveTowards; // Movement type used
     public MovementPath MyPath; // Reference to Movement Path Used
-    public float Speed = 1; // Speed object is moving
+    public float Speed = 1f; // Speed object is moving
     public float MaxDistanceToGoal = .1f; // How close does it have to be to the point to be considered at point
     #endregion //Public Variables
 
@@ -37,7 +37,7 @@ public class FollowPath : MonoBehaviour
         }
 
         //Sets up a reference to an instance of the coroutine GetNextPathPoint
-        pointInPath = MyPath.GetNextPathPoint();
+        //pointInPath = MyPath.GetNextPathPoint();
         Debug.Log(pointInPath.Current);
         //Get the next point in the path to move to (Gets the Default 1st value)
         pointInPath.MoveNext();

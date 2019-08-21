@@ -1,19 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public float speed = 2f;
+    public MovementPath myPath;
     [SerializeField]
-    private Transform mainTower;
-    [SerializeField]
-    private Transform[] wayPoints;
-    [SerializeField]
-    private float navigationUpdate;
-
     private int target = 0;
     private Transform enemy;
-    private float navigationTime = 0 ;
+
+    
 
 
     // Start is called before the first frame update
@@ -21,43 +16,38 @@ public class Enemy : MonoBehaviour
     {
         enemy = GetComponent<Transform>();
         GameManager.Instance.RegisterEnemy(this);
+        if (myPath.PathSequence.Length == 0)
+            Debug.Log("We need a path to follow");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (wayPoints != null)
+        if (myPath.PathSequence.Length != 0)
         {
-            navigationTime += Time.deltaTime;
-            if (navigationTime > navigationUpdate)
+            
+            if (target < myPath.PathSequence.Length)
             {
-                if (target < wayPoints.Length)
-                {
-                    enemy.position = Vector2.MoveTowards(enemy.position, wayPoints[target].position, navigationTime);
+                enemy.position = Vector2.MoveTowards(enemy.position, myPath.PathSequence[target].position, Time.deltaTime * speed);
                     
-                }
-                else
-                {
-                    enemy.position = Vector2.MoveTowards(enemy.position, mainTower.position, navigationTime);
-                }
-                navigationTime = 0;
             }
+            
         }
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (other.tag == "CheckPoint")
+        if (col.gameObject.tag == "path")
         {
             target += 1;
-            Debug.Log(target);
+            Debug.Log("target: " + target);
         }
-        else if (other.tag == "Finish")
+        else if (col.gameObject.tag == "Finish")
         {
             
             GameManager.Instance.UnregisterEnemy(this);
-
+           
         }
     }
 }

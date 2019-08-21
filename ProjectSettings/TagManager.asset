@@ -11,6 +11,7 @@ TagManager:
   - tower
   - buildSiteFull
   - projectile
+  - path
   layers:
   - Default
   - TransparentFX

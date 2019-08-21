@@ -134,7 +134,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0000001937151, y: -0.13777673}
@@ -148,7 +148,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29999962, y: 0.26232362}
+  m_Size: {x: 0.2, y: 0.35}
   m_EdgeRadius: 0
 --- !u!114 &6573836560313200210
 MonoBehaviour:
@@ -162,21 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9913dfac98e6e54798b89ed21e43c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTower: {fileID: 0}
-  wayPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  navigationUpdate: 0.01
+  mainTower: {fileID: 1497598051480030724, guid: 566bf844e275a654aaddfbc1b0ea5153,
+    type: 3}
+  speed: 1
+  myPath: {fileID: 1801260098, guid: 4e5f8dbc6965d264caa12c472b3efd4f, type: 3}
+  target: 0
