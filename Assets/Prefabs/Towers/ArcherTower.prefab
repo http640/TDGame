@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3864400080855128696}
   - component: {fileID: 5740223387689088177}
+  - component: {fileID: 1989628968454987098}
   m_Layer: 9
   m_Name: ArcherTower
   m_TagString: tower
@@ -80,3 +81,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1989628968454987098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846065842490083145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52621ab68c256fb4d97bc6a4ae67417c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 1
+  attackRadius: 3
+  projectileSpeed: 5
+  projectile: {fileID: -2645660222539303154, guid: 7c265fbbe3173ec47a2f2931eac99435,
+    type: 3}

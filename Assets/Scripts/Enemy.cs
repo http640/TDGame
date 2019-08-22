@@ -41,13 +41,17 @@ public class Enemy : MonoBehaviour
         if (col.gameObject.tag == "path")
         {
             target += 1;
-            Debug.Log("target: " + target);
+            //Debug.Log("target: " + target);
         }
         else if (col.gameObject.tag == "Finish")
         {
             
             GameManager.Instance.UnregisterEnemy(this);
            
+        }
+        else if (col.gameObject.tag == "projectile")
+        {
+            Destroy(col.gameObject);
         }
     }
 }
