@@ -7,9 +7,19 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int target = 0;
     private Transform enemy;
+    [SerializeField]
+    private int healthPoint;
+    private bool isDead = false;
+    private Collider2D enemyCollider;
+    private Animator anim;
 
-    
-
+    public bool IsDead
+    {
+        get
+        {
+            return isDead;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +28,14 @@ public class Enemy : MonoBehaviour
         GameManager.Instance.RegisterEnemy(this);
         if (myPath.PathSequence.Length == 0)
             Debug.Log("We need a path to follow");
+        enemyCollider = GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (myPath.PathSequence.Length != 0)
+        if (myPath.PathSequence.Length != 0 && !isDead)
         {
             
             if (target < myPath.PathSequence.Length)
@@ -51,7 +63,29 @@ public class Enemy : MonoBehaviour
         }
         else if (col.gameObject.tag == "projectile")
         {
+            Projectile newProjectile = col.gameObject.GetComponent<Projectile>();
+            enemyHit(newProjectile.AttackStrength);
             Destroy(col.gameObject);
         }
+    }
+    public void enemyHit(int hitpoints)
+    {
+        if(healthPoint - hitpoints > 0)
+        {
+            healthPoint -= hitpoints;
+            anim.Play("Hurt"); 
+        }
+        else
+        {
+            anim.SetTrigger("didDie");
+            //anim.Play("Diying");
+            die();
+        }
+    }
+    public void die()
+    {
+
+        isDead = true;
+        enemyCollider.enabled = false;
     }
 }

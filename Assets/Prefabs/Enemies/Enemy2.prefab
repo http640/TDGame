@@ -162,8 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9913dfac98e6e54798b89ed21e43c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTower: {fileID: 1497598051480030724, guid: 566bf844e275a654aaddfbc1b0ea5153,
-    type: 3}
   speed: 1
   myPath: {fileID: 1801260098, guid: 4e5f8dbc6965d264caa12c472b3efd4f, type: 3}
   target: 0
+  healthPoint: 150
