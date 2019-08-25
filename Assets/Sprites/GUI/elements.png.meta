@@ -11,6 +11,15 @@ TextureImporter:
   - first:
       213: -1031461609359061574
     second: knightTower
+  - first:
+      213: 4275340929581230144
+    second: MoneyStatus
+  - first:
+      213: -7391450280305862978
+    second: PlayBtn
+  - first:
+      213: -7467064533967201946
+    second: towerShield
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -153,6 +162,69 @@ TextureImporter:
       bones: []
       spriteID: 2edd63f4c61479249bd1a447c269856d
       internalID: -1031461609359061574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoneyStatus
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 1184
+        width: 250
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b3c187be1144f54ca65bfabf3369c56
+      internalID: 4275340929581230144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayBtn
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 1417
+        width: 377
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd211105ccb8c1d41ab8bf8392c8515c
+      internalID: -7391450280305862978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: towerShield
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 2263
+        width: 69
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813e3c72bd2dfb64da7fcf7420f64a33
+      internalID: -7467064533967201946
       vertices: []
       indices: 
       edges: []
