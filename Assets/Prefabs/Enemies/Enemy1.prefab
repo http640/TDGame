@@ -165,4 +165,5 @@ MonoBehaviour:
   speed: 1
   myPath: {fileID: 1801260098, guid: 4e5f8dbc6965d264caa12c472b3efd4f, type: 3}
   target: 0
-  healthPoint: 150
+  healthPoint: 200
+  killRewad: 2

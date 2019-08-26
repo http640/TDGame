@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TowerManager : Singletons<TowerManager>
 {
-    private TowerBtn towerBtnPressed;
+    public TowerBtn towerBtnPressed { get; set; }
     private SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()

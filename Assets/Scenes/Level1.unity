@@ -2170,7 +2170,7 @@ GameObject:
   - component: {fileID: 83153195}
   - component: {fileID: 83153194}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NextWaveLbl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7007,7 +7007,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Scaped 0/10
+  m_Text: Escaped 0/10
 --- !u!222 &293909227
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35535,6 +35535,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5282594352811066440, guid: e47eadf884ac50f418d6143d568a66ac,
         type: 3}
+      propertyPath: totalMoneyLbl
+      value: 
+      objectReference: {fileID: 760985675}
+    - target: {fileID: 5282594352811066440, guid: e47eadf884ac50f418d6143d568a66ac,
+        type: 3}
+      propertyPath: currentWaveLbl
+      value: 
+      objectReference: {fileID: 755367280}
+    - target: {fileID: 5282594352811066440, guid: e47eadf884ac50f418d6143d568a66ac,
+        type: 3}
+      propertyPath: playBtnLbl
+      value: 
+      objectReference: {fileID: 83153194}
+    - target: {fileID: 5282594352811066440, guid: e47eadf884ac50f418d6143d568a66ac,
+        type: 3}
+      propertyPath: totalEscapedLbl
+      value: 
+      objectReference: {fileID: 293909226}
+    - target: {fileID: 5282594352811066440, guid: e47eadf884ac50f418d6143d568a66ac,
+        type: 3}
+      propertyPath: playBtn
+      value: 
+      objectReference: {fileID: 1997729000}
+    - target: {fileID: 5282594352811066440, guid: e47eadf884ac50f418d6143d568a66ac,
+        type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 98731351}
@@ -44286,7 +44311,7 @@ GameObject:
   - component: {fileID: 1997729001}
   - component: {fileID: 1997729000}
   m_Layer: 5
-  m_Name: Button
+  m_Name: NextWaveBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     private Transform enemy;
     [SerializeField]
     private int healthPoint;
+    [SerializeField]
+    private int killRewad;
     private bool isDead = false;
     private Collider2D enemyCollider;
     private Animator anim;
