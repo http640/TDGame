@@ -25,9 +25,7 @@ public class GameManager : Singletons<GameManager>
     [SerializeField]
     private GameObject[] enemies;
     [SerializeField]
-    private int totalEnemies;
-    [SerializeField]
-    private int maxEnemiesOnScreen;
+    private int totalEnemies = 3;
     [SerializeField]
     private int enemiesPerSpawn;
     [SerializeField]
@@ -57,6 +55,39 @@ public class GameManager : Singletons<GameManager>
             totalMoneyLbl.text = totalMoney.ToString();
         }
     }
+    public int TotalEscaped
+    {
+        get
+        {
+            return totalEscaped;
+        }
+        set
+        {
+            totalEscaped = value;
+        }
+    }
+    public int RoundEscaped
+    {
+        get
+        {
+            return roundEscaped;
+        }
+        set
+        {
+            roundEscaped = value;
+        }
+    }
+    public int TotalKilled
+    {
+        get
+        {
+            return totalKilled;
+        }
+        set
+        {
+            totalKilled = value;
+        }
+    }
 
     private void Start()
     {
@@ -69,21 +100,20 @@ public class GameManager : Singletons<GameManager>
     }
     IEnumerator spawn ()
     {
-        if (enemiesPerSpawn > 0 && EnemyList.Count < maxEnemiesOnScreen)
+        if (enemiesPerSpawn > 0 && EnemyList.Count < totalEnemies)
         {
             for (int i = 0; i < enemiesPerSpawn; ++i)
             {
-                if (EnemyList.Count < maxEnemiesOnScreen)
+                if (EnemyList.Count < totalEnemies)
                     
                 {
-                    GameObject newEnemy = Instantiate(enemies[1]) as GameObject;
+                    GameObject newEnemy = Instantiate(enemies[0]) as GameObject;
                     newEnemy.transform.position = spawnPoint.transform.position;
                 }
 
             }
             yield return new WaitForSeconds(spawnDelay);
             StartCoroutine(spawn());
-
         }
     }
 
@@ -97,13 +127,6 @@ public class GameManager : Singletons<GameManager>
         EnemyList.Remove(enemy);
         Destroy(enemy.gameObject);
     }
-    /*public void RemoveEnemyOnScreen()
-    {
-        if (enemiesOnScreen > 0)
-        {
-            enemiesOnScreen -= 1;
-        }
-    }*/
 
    public void DestroyAllEnemies()
     {
@@ -122,6 +145,64 @@ public class GameManager : Singletons<GameManager>
     {
         TotalMoney -= amount;
     }
+    public void isWaveOver()
+    {
+        totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
+        if((RoundEscaped + TotalKilled) == totalEnemies)
+        {
+
+            setCurrentGameState();
+            showMenu(); 
+        }
+    }
+    public void playBtnPressed()
+    {
+        switch (currentState)
+        {
+            case gameStatus.next:
+                waveNumber += 1;
+                totalEnemies += waveNumber;
+                break;
+            
+            default:
+                totalEnemies = 3; //have to be 5
+                TotalEscaped = 0;
+                TotalMoney = 10;
+                TowerManager.Instance.DestroyAllTower();
+                TowerManager.Instance.RenameBuiltSitesTags();
+                totalMoneyLbl.text = TotalMoney.ToString();
+                totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10"; //chenge to variable
+                break;
+        }
+        DestroyAllEnemies();
+        TotalKilled = 0;
+        RoundEscaped = 0;
+        currentWaveLbl.text = "Wave " + (waveNumber + 1);
+        StartCoroutine(spawn());
+        playBtn.gameObject.SetActive(false);
+    }
+
+    public void setCurrentGameState()
+    {
+        if (TotalEscaped >= 10)
+        {
+            currentState = gameStatus.gameover;
+        }
+        else if (waveNumber == 0 && (TotalKilled + TotalEscaped) == 0)
+        {
+            currentState = gameStatus.play;
+        }
+        else if (waveNumber >= totalWaves)
+        {
+            currentState = gameStatus.win;
+        }
+        //add for stop and shop btn
+        else
+        {
+            currentState = gameStatus.next;
+        }
+    }
+
     public void showMenu()
     {
         switch (currentState)
@@ -137,7 +218,7 @@ public class GameManager : Singletons<GameManager>
                 playBtnLbl.text = "Play";
                 break;
             case gameStatus.win:
-                playBtnLbl.text = "Playe";
+                playBtnLbl.text = "Play";
                 break;
             case gameStatus.shop:
                 //go to shop menu

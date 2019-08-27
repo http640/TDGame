@@ -59,9 +59,10 @@ public class Enemy : MonoBehaviour
         }
         else if (col.gameObject.tag == "Finish")
         {
-            
+            GameManager.Instance.RoundEscaped += 1;
+            GameManager.Instance.TotalEscaped += 1;
             GameManager.Instance.UnregisterEnemy(this);
-           
+            GameManager.Instance.isWaveOver();
         }
         else if (col.gameObject.tag == "projectile")
         {
@@ -86,8 +87,10 @@ public class Enemy : MonoBehaviour
     }
     public void die()
     {
-
         isDead = true;
         enemyCollider.enabled = false;
+        GameManager.Instance.TotalKilled += 1;
+        GameManager.Instance.addMoney(killRewad);
+        GameManager.Instance.isWaveOver();
     }
 }

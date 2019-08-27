@@ -1,17 +1,23 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class TowerManager : Singletons<TowerManager>
 {
     public TowerBtn towerBtnPressed { get; set; }
     private SpriteRenderer spriteRenderer;
-    // Start is called before the first frame update
+    private List<Tower> TowerList = new List<Tower>();
+    private List<Collider2D> BuildList = new List<Collider2D>();
+    private Collider2D buildTile;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        buildTile = GetComponent<Collider2D>();
+        spriteRenderer.enabled = false;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -20,7 +26,9 @@ public class TowerManager : Singletons<TowerManager>
             RaycastHit2D hit = Physics2D.Raycast(mapPoint, Vector2.zero);
             if (hit.collider.tag == "BuildSite")
             {
-                hit.collider.tag = "buildSiteFull";
+                buildTile = hit.collider;
+                buildTile.tag = "buildSiteFull";
+                RegisterBuildSite(buildTile);
                 placeTower(hit);
             }
                 
@@ -31,22 +39,55 @@ public class TowerManager : Singletons<TowerManager>
         }
 
     }
+    public void RegisterBuildSite(Collider2D buildTag)
+    {
+        BuildList.Add(buildTag);
+    }
+    public void RegisterTower(Tower tower)
+    {
+        TowerList.Add(tower);
+    }
+    public void RenameBuiltSitesTags()
+    {
+        foreach(Collider2D buildTag in BuildList)
+        {
+            buildTag.tag = "BuildSite";
+        }
+        BuildList.Clear();
+    }
+    public void DestroyAllTower()
+    {
+        foreach(Tower tower in TowerList)
+        {
+            Destroy(tower.gameObject);
+        }
+        TowerList.Clear();
+    }
 
     public void placeTower(RaycastHit2D hit)
     {
         if(!EventSystem.current.IsPointerOverGameObject() && towerBtnPressed != null)
         {
-            GameObject newTower = Instantiate(towerBtnPressed.TowerObject);
+            Tower newTower = Instantiate(towerBtnPressed.TowerObject);
             newTower.transform.position = hit.transform.position;
+            buyTower(towerBtnPressed.TowerPrice);
+            RegisterTower(newTower);
             disableDragSprite();
         }
         
     }
     public void SelectedTower (TowerBtn towerSelected)
     {
-        towerBtnPressed = towerSelected;
-        //Debug.Log("Tower Selected: " + towerBtnPressed.gameObject);
-        enableDragSprite(towerBtnPressed.DrageSprite);
+        if(towerSelected.TowerPrice <= GameManager.Instance.TotalMoney)
+        {
+            towerBtnPressed = towerSelected;
+            //Debug.Log("Tower Selected: " + towerBtnPressed.gameObject);
+            enableDragSprite(towerBtnPressed.DrageSprite);
+        }
+    }
+    public void buyTower(int price)
+    {
+        GameManager.Instance.subtractMoney(price);
     }
     public void followMouse()
     {
