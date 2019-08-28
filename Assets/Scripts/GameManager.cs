@@ -11,7 +11,7 @@ public enum gameStatus
 public class GameManager : Singletons<GameManager>
 {
     [SerializeField]
-    private int totalWaves = 10;
+    private int totalWaves;
     [SerializeField]
     private Text totalMoneyLbl;
     [SerializeField]
@@ -25,7 +25,7 @@ public class GameManager : Singletons<GameManager>
     [SerializeField]
     private Button playBtn;
     [SerializeField]
-    private GameObject[] enemies;
+    private Enemy[] enemies;
     [SerializeField]
     private int totalEnemies = 3;
     [SerializeField]
@@ -39,6 +39,7 @@ public class GameManager : Singletons<GameManager>
     private int totalEscaped = 0;
     private int roundEscaped = 0;
     private int totalKilled = 0;
+    private int enemiesToSpawn = 0;
     private int whitchEnemyToSpawn = 0;
     private gameStatus currentState = gameStatus.play;
     private AudioSource audioSource;
@@ -125,7 +126,7 @@ public class GameManager : Singletons<GameManager>
                 if (EnemyList.Count < totalEnemies)
                     
                 {
-                    GameObject newEnemy = Instantiate(enemies[0]) as GameObject;
+                    Enemy newEnemy = Instantiate(enemies[Random.Range(0,enemiesToSpawn)]) as Enemy;
                     newEnemy.transform.position = spawnPoint.transform.position;
                 }
 
@@ -168,7 +169,10 @@ public class GameManager : Singletons<GameManager>
         totalEscapedLbl.text = "Escaped " + TotalEscaped + "/" + escapeLimit;
         if((RoundEscaped + TotalKilled) == totalEnemies)
         {
-
+            if(waveNumber <= enemies.Length)
+            {
+                enemiesToSpawn = waveNumber;
+            }
             setCurrentGameState();
             showMenu(); 
         }
@@ -183,9 +187,11 @@ public class GameManager : Singletons<GameManager>
                 break;
             
             default:
-                totalEnemies = 3; //have to be 5
+                totalEnemies = 4; //have to be 5
                 TotalEscaped = 0;
                 TotalMoney = 10;
+                enemiesToSpawn = 0;
+                waveNumber = 0;
                 TowerManager.Instance.DestroyAllTower();
                 TowerManager.Instance.RenameBuiltSitesTags();
                 totalMoneyLbl.text = TotalMoney.ToString();
@@ -237,7 +243,7 @@ public class GameManager : Singletons<GameManager>
                 playBtnLbl.text = "Play";
                 break;
             case gameStatus.win:
-                playBtnLbl.text = "Play";
+                playBtnLbl.text = "Go To Next Level";
                 break;
             case gameStatus.shop:
                 //go to shop menu

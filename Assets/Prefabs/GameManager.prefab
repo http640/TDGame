@@ -52,9 +52,9 @@ MonoBehaviour:
   escapeLimit: 5
   playBtn: {fileID: 0}
   enemies:
-  - {fileID: 6357427952382317904, guid: 00817ead82c912844b187984f0a75561, type: 3}
-  - {fileID: 7719797380960411051, guid: 8cdae0b88e79b2546bc3443bf3ccd75e, type: 3}
-  - {fileID: 1674880657807356550, guid: 2c490c2b86dcbd7429da493c5f369183, type: 3}
+  - {fileID: 6573836560313200210, guid: 00817ead82c912844b187984f0a75561, type: 3}
+  - {fileID: 7934571379418353260, guid: 8cdae0b88e79b2546bc3443bf3ccd75e, type: 3}
+  - {fileID: 252003072402880289, guid: 2c490c2b86dcbd7429da493c5f369183, type: 3}
   totalEnemies: 3
   enemiesPerSpawn: 1
   spawnPoint: {fileID: 0}
