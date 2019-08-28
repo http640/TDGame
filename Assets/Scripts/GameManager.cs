@@ -21,6 +21,8 @@ public class GameManager : Singletons<GameManager>
     [SerializeField]
     private Text totalEscapedLbl;
     [SerializeField]
+    private int escapeLimit;
+    [SerializeField]
     private Button playBtn;
     [SerializeField]
     private GameObject[] enemies;
@@ -39,6 +41,7 @@ public class GameManager : Singletons<GameManager>
     private int totalKilled = 0;
     private int whitchEnemyToSpawn = 0;
     private gameStatus currentState = gameStatus.play;
+    private AudioSource audioSource;
 
     const float spawnDelay = 0.5f;
     public List<Enemy> EnemyList = new List<Enemy>();
@@ -66,6 +69,13 @@ public class GameManager : Singletons<GameManager>
             totalEscaped = value;
         }
     }
+    public int EscapeLimit
+    {
+        get
+        {
+            return escapeLimit;
+        }
+    }
     public int RoundEscaped
     {
         get
@@ -88,10 +98,18 @@ public class GameManager : Singletons<GameManager>
             totalKilled = value;
         }
     }
+    public AudioSource AudioSource
+    {
+        get
+        {
+            return audioSource;
+        }
+    }
 
     private void Start()
     {
         playBtn.gameObject.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
         showMenu();
     }
     private void Update()
@@ -147,7 +165,7 @@ public class GameManager : Singletons<GameManager>
     }
     public void isWaveOver()
     {
-        totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
+        totalEscapedLbl.text = "Escaped " + TotalEscaped + "/" + escapeLimit;
         if((RoundEscaped + TotalKilled) == totalEnemies)
         {
 
@@ -171,7 +189,8 @@ public class GameManager : Singletons<GameManager>
                 TowerManager.Instance.DestroyAllTower();
                 TowerManager.Instance.RenameBuiltSitesTags();
                 totalMoneyLbl.text = TotalMoney.ToString();
-                totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10"; //chenge to variable
+                totalEscapedLbl.text = "Escaped " + TotalEscaped + "/" + escapeLimit;
+                audioSource.PlayOneShot(SoundManager.Instance.NewGame);
                 break;
         }
         DestroyAllEnemies();
@@ -184,7 +203,7 @@ public class GameManager : Singletons<GameManager>
 
     public void setCurrentGameState()
     {
-        if (TotalEscaped >= 10)
+        if (TotalEscaped >= escapeLimit)
         {
             currentState = gameStatus.gameover;
         }
@@ -209,7 +228,7 @@ public class GameManager : Singletons<GameManager>
         {
             case gameStatus.gameover:
                 playBtnLbl.text = "Play Again";
-                //add gameover sound
+                AudioSource.PlayOneShot(SoundManager.Instance.Gameover);
                 break;
             case gameStatus.next:
                 playBtnLbl.text = "Next Wave";

@@ -70,12 +70,14 @@ public class Enemy : MonoBehaviour
             enemyHit(newProjectile.AttackStrength);
             Destroy(col.gameObject);
         }
+
     }
     public void enemyHit(int hitpoints)
     {
         if(healthPoint - hitpoints > 0)
         {
             healthPoint -= hitpoints;
+            GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Hit);
             anim.Play("Hurt"); 
         }
         else
@@ -90,6 +92,7 @@ public class Enemy : MonoBehaviour
         isDead = true;
         enemyCollider.enabled = false;
         GameManager.Instance.TotalKilled += 1;
+        GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Death);
         GameManager.Instance.addMoney(killRewad);
         GameManager.Instance.isWaveOver();
     }
