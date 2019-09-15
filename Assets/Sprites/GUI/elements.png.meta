@@ -20,6 +20,9 @@ TextureImporter:
   - first:
       213: -7467064533967201946
     second: towerShield
+  - first:
+      213: 2213731607469278391
+    second: square
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -217,7 +220,7 @@ TextureImporter:
         width: 69
         height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,6 +228,27 @@ TextureImporter:
       bones: []
       spriteID: 813e3c72bd2dfb64da7fcf7420f64a33
       internalID: -7467064533967201946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: square
+      rect:
+        serializedVersion: 2
+        x: 1650
+        y: 1211
+        width: 55
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad63f09a2bbabb24dae5d3f83bfc0791
+      internalID: 2213731607469278391
       vertices: []
       indices: 
       edges: []

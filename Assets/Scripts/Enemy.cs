@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     private bool isDead = false;
     private Collider2D enemyCollider;
     private Animator anim;
+    private float previousPos;
 
     public bool IsDead
     {
@@ -22,8 +23,7 @@ public class Enemy : MonoBehaviour
             return isDead;
         }
     }
-
-    // Start is called before the first frame update
+    // if this script run it means an enemy has been spawn and in start we need to Get Components
     void Start()
     {
         enemy = GetComponent<Transform>();
@@ -33,23 +33,25 @@ public class Enemy : MonoBehaviour
         enemyCollider = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
+    // Enemy goes throught on path
     void Update()
     {
         if (myPath.PathSequence.Length != 0 && !isDead)
         {
-            
             if (target < myPath.PathSequence.Length)
             {
                 enemy.position = Vector2.MoveTowards(enemy.position, myPath.PathSequence[target].position, Time.deltaTime * speed);
-                    
+                if( Vector2.Distance(enemy.position , myPath.PathSequence[target].position) <0.1f)
+                {
+                    print("current target = " + target);
+                    if (target >= myPath.PathSequence.Length)
+                        print("end of path");
+                }
+                previousPos = enemy.position.x;
             }
-            
         }
-        
     }
-
+    // Control Collides with its tags
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "path")
@@ -61,7 +63,7 @@ public class Enemy : MonoBehaviour
         {
             GameManager.Instance.RoundEscaped += 1;
             GameManager.Instance.TotalEscaped += 1;
-            GameManager.Instance.UnregisterEnemy(this);
+            //GameManager.Instance.UnregisterEnemy(this);
             GameManager.Instance.isWaveOver();
         }
         else if (col.gameObject.tag == "projectile")
@@ -70,8 +72,8 @@ public class Enemy : MonoBehaviour
             enemyHit(newProjectile.AttackStrength);
             Destroy(col.gameObject);
         }
-
     }
+    //decrease Enemy healthPoint by projectile hitPoints and if Enemy dead play animation and call die()
     public void enemyHit(int hitpoints)
     {
         if(healthPoint - hitpoints > 0)
@@ -87,6 +89,7 @@ public class Enemy : MonoBehaviour
             die();
         }
     }
+    //change parameter values when Enemy dead
     public void die()
     {
         isDead = true;

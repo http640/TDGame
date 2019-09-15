@@ -55,7 +55,8 @@ MonoBehaviour:
   - {fileID: 6573836560313200210, guid: 00817ead82c912844b187984f0a75561, type: 3}
   - {fileID: 7934571379418353260, guid: 8cdae0b88e79b2546bc3443bf3ccd75e, type: 3}
   - {fileID: 252003072402880289, guid: 2c490c2b86dcbd7429da493c5f369183, type: 3}
-  totalEnemies: 3
+  - {fileID: 377073313390328609, guid: 9756c84b6949ca644b099c3f59cc6c91, type: 3}
+  totalEnemies: 4
   enemiesPerSpawn: 1
   spawnPoint: {fileID: 0}
   EnemyList: []

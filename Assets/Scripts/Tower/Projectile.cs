@@ -11,6 +11,13 @@ public class Projectile : MonoBehaviour
     private int attackStrength;
     [SerializeField]
     private proType projectileType;
+    public Transform ThisTransform { get; set; }
+
+
+    public void Awake()
+    {
+        ThisTransform = this.transform;
+    }
 
     public int AttackStrength
     {

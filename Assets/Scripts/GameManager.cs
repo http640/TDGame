@@ -106,7 +106,6 @@ public class GameManager : Singletons<GameManager>
             return audioSource;
         }
     }
-
     private void Start()
     {
         playBtn.gameObject.SetActive(false);
@@ -117,6 +116,7 @@ public class GameManager : Singletons<GameManager>
     {
         handelEscape();
     }
+    //Spawn Enemey in each wave
     IEnumerator spawn ()
     {
         if (enemiesPerSpawn > 0 && EnemyList.Count < totalEnemies)
@@ -126,44 +126,47 @@ public class GameManager : Singletons<GameManager>
                 if (EnemyList.Count < totalEnemies)
                     
                 {
-                    Enemy newEnemy = Instantiate(enemies[Random.Range(0,enemiesToSpawn)]) as Enemy;
-                    newEnemy.transform.position = spawnPoint.transform.position;
+                    Enemy newEnemy = Instantiate(enemies[Random.Range(0,enemiesToSpawn)], spawnPoint.transform.position,Quaternion.identity) as Enemy;
+               
                 }
-
             }
             yield return new WaitForSeconds(spawnDelay);
             StartCoroutine(spawn());
         }
     }
-
+    //Add Enemy to List to know how many enemy spawned
     public void RegisterEnemy(Enemy enemy)
     {
+        //call in Start Function in Enemy Script
         EnemyList.Add(enemy);
     }
-
+    //Remove enemy form list when collide by Finish tag (MainTower)
     public void UnregisterEnemy(Enemy enemy)
     {
         EnemyList.Remove(enemy);
         Destroy(enemy.gameObject);
     }
-
-   public void DestroyAllEnemies()
+    //Destroy all Enemies and clear EnemyList when Play Button or Next wave Pressed
+    public void DestroyAllEnemies()
     {
         foreach(Enemy enemy in EnemyList)
         {
             Destroy(enemy.gameObject);
         }
-
         EnemyList.Clear();  
     }
+    //Add Money when a tower kill an Enemy and killReward will add to TotalMoney
     public void addMoney(int amount)
     {
         TotalMoney += amount;
     }
+    //Subtract Tower Price From Total Money When a Tower Deploy
     public void subtractMoney(int amount)
     {
         TotalMoney -= amount;
     }
+    //it controls Escaped Label text and call in each collide with Finish tag
+    //if Enemies escaped + killed = totalEnemies so wave is over and call in each deth and change GameState and show menu
     public void isWaveOver()
     {
         totalEscapedLbl.text = "Escaped " + TotalEscaped + "/" + escapeLimit;
@@ -177,8 +180,11 @@ public class GameManager : Singletons<GameManager>
             showMenu(); 
         }
     }
+    //Control events when play button pressed
     public void playBtnPressed()
     {
+        //if currentState = gameStatus.next wave number will increse and total enemy for next round will add up with waveNumber
+        //else all things have to be reset
         switch (currentState)
         {
             case gameStatus.next:
@@ -199,14 +205,16 @@ public class GameManager : Singletons<GameManager>
                 audioSource.PlayOneShot(SoundManager.Instance.NewGame);
                 break;
         }
+        //reset parameters for new wave
         DestroyAllEnemies();
         TotalKilled = 0;
         RoundEscaped = 0;
         currentWaveLbl.text = "Wave " + (waveNumber + 1);
+        //for new wave we have to call spawn again with new values
         StartCoroutine(spawn());
         playBtn.gameObject.SetActive(false);
     }
-
+    //when isWaveOver we have to change setCurrentGameState 
     public void setCurrentGameState()
     {
         if (TotalEscaped >= escapeLimit)
@@ -227,7 +235,7 @@ public class GameManager : Singletons<GameManager>
             currentState = gameStatus.next;
         }
     }
-
+    //foreach state it change playBtnLbl text
     public void showMenu()
     {
         switch (currentState)
@@ -252,9 +260,10 @@ public class GameManager : Singletons<GameManager>
                 //go to stop (option, resume, exit) menu
                 break;
         }
+        //in show menu true and false when it pressed 
         playBtn.gameObject.SetActive(true);
-
     }
+    //when pressed Escaped Key on the Keyboard disableDragSprite function has been called
     private void handelEscape()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

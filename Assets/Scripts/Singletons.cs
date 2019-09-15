@@ -13,6 +13,7 @@ public class Singletons<T> :  MonoBehaviour where T : MonoBehaviour
             else if (instance != FindObjectOfType<T>())
                 Destroy(FindObjectOfType<T>());
 
+            //Do not destroy the target Object when loading a new Scene.
             DontDestroyOnLoad(FindObjectOfType<T>());
 
             return instance;    

@@ -16,8 +16,7 @@ public class TowerManager : Singletons<TowerManager>
         buildTile = GetComponent<Collider2D>();
         spriteRenderer.enabled = false;
     }
-
-
+    //control placing tower and follow mouse
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -30,23 +29,24 @@ public class TowerManager : Singletons<TowerManager>
                 buildTile.tag = "buildSiteFull";
                 RegisterBuildSite(buildTile);
                 placeTower(hit);
-            }
-                
+            }               
         }
         if (spriteRenderer.enabled)
         {
             followMouse();
         }
-
     }
+    //Register Build Sites for change their Tag and reset it later
     public void RegisterBuildSite(Collider2D buildTag)
     {
         BuildList.Add(buildTag);
     }
+    //Register towers that build beacuse we need to remove them later
     public void RegisterTower(Tower tower)
     {
         TowerList.Add(tower);
     }
+    //Rename BuiltSite Tag for Prevent replacing on each other
     public void RenameBuiltSitesTags()
     {
         foreach(Collider2D buildTag in BuildList)
@@ -55,6 +55,7 @@ public class TowerManager : Singletons<TowerManager>
         }
         BuildList.Clear();
     }
+    //Destroy all towers that built. call when gameSatate has been changed.
     public void DestroyAllTower()
     {
         foreach(Tower tower in TowerList)
@@ -63,7 +64,7 @@ public class TowerManager : Singletons<TowerManager>
         }
         TowerList.Clear();
     }
-
+    //place tower
     public void placeTower(RaycastHit2D hit)
     {
         if(!EventSystem.current.IsPointerOverGameObject() && towerBtnPressed != null)
@@ -74,8 +75,7 @@ public class TowerManager : Singletons<TowerManager>
             GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.TowerBuild);
             RegisterTower(newTower);
             disableDragSprite();
-        }
-        
+        }  
     }
     public void SelectedTower (TowerBtn towerSelected)
     {
@@ -99,12 +99,9 @@ public class TowerManager : Singletons<TowerManager>
     {
         spriteRenderer.enabled = true;
         spriteRenderer.sprite = sprite;
-
     }
     public void disableDragSprite()
     {
         spriteRenderer.enabled = false;
-
     }
-
 }

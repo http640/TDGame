@@ -22,7 +22,7 @@ public class Tower : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    // find Enemy and Attack to it
     void Update()
     {
         attackCounter -= Time.deltaTime;
@@ -61,6 +61,7 @@ public class Tower : MonoBehaviour
         }
         
     }
+    //create projectile and its sounds and shooting projectiles
     public void Attack()
     {
         isAttacking = false;
@@ -80,7 +81,7 @@ public class Tower : MonoBehaviour
         }
         if(targetEnemy == null)
         {
-            Destroy(newProjectile);
+            Destroy(newProjectile.ThisTransform.gameObject);
         }
         else
         {
@@ -88,14 +89,28 @@ public class Tower : MonoBehaviour
             StartCoroutine (ShootingProjectile(newProjectile));
         }
     }
+    //shooting a rotate projectile to enemy
     IEnumerator ShootingProjectile(Projectile projectile)
     {
-        while(getTargetDistance(targetEnemy) > 0.20f && projectile != null && targetEnemy != null)
+        while (getTargetDistance(targetEnemy) > 0.10f && projectile != null && targetEnemy != null)
         {
-            var dir = targetEnemy.transform.localPosition - transform.localPosition;
+            var dir = (targetEnemy.transform.position - projectile.transform.position);
+            /*
+            Quaternion rot = Quaternion.LookRotation(dir);
+            rot.x = 0;
+            rot.z = 0;
+            projectile.ThisTransform.rotation = Quaternion.Slerp(projectile.ThisTransform.rotation, rot, Time.deltaTime * 15f);
+            */
             var angleDirection = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
             projectile.transform.rotation = Quaternion.AngleAxis(angleDirection,Vector3.forward);
+            
             projectile.transform.localPosition = Vector2.MoveTowards(projectile.transform.localPosition, targetEnemy.transform.localPosition, projectileSpeed * Time.deltaTime);
+            
+            
+            
+            
+
+            Debug.DrawRay(transform.position, dir, Color.red);
             yield return null;
         }
         if(projectile != null || targetEnemy == null)
@@ -113,7 +128,7 @@ public class Tower : MonoBehaviour
         }
         return Mathf.Abs(Vector2.Distance(transform.localPosition, thisEnemy.transform.localPosition));
     }
-
+    //if enemy be in range it will add to a list  
     private List<Enemy> GetEnemiesInRange()
     {
         List<Enemy> enemiesInRange = new List<Enemy>();
@@ -126,7 +141,7 @@ public class Tower : MonoBehaviour
         }
         return enemiesInRange;
     }
-
+    //find the nearest enemy to tower and select it as targetEnemy
     private Enemy GetNearestEnemyInRange()
     {
         Enemy nearestEnemy = null;
