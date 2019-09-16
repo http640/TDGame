@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
             }
             if (enemy.position == myPath.PathSequence[target].position && target < myPath.PathSequence.Length - 1)
             {
-                Debug.Log(target);
+                //Debug.Log(target);
                 target ++;
             }
         }
@@ -64,12 +64,8 @@ public class Enemy : MonoBehaviour
     // Control Collides with its tags
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "path")
-        {
-            //target += 1;
-            //Debug.Log("target: " + target);
-        }
-        else if (col.gameObject.tag == "Finish")
+        
+        if (col.gameObject.tag == "Finish")
         {
             //GameManager.Instance.RoundEscaped += 1;
             //GameManager.Instance.TotalEscaped += 1;
