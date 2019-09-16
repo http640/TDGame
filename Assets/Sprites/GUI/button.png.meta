@@ -14,6 +14,9 @@ TextureImporter:
   - first:
       213: 3826982983249899106
     second: Btn
+  - first:
+      213: 5524248367434391381
+    second: BackButton
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -181,6 +184,27 @@ TextureImporter:
       bones: []
       spriteID: 5fde3f25ca33e3042bfaf366f6859f61
       internalID: 3826982983249899106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackButton
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 3928
+        width: 286
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e249954ed1e52a49a0243725240cc44
+      internalID: 5524248367434391381
       vertices: []
       indices: 
       edges: []

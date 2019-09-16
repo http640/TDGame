@@ -21,7 +21,9 @@ public class SoundManager : Singletons<SoundManager>
     private AudioClip rock;
     [SerializeField]
     private AudioClip towerBuild;
-    
+    [SerializeField]
+    private AudioClip click;
+
     public AudioClip Arrow
     {
         get
@@ -36,54 +38,60 @@ public class SoundManager : Singletons<SoundManager>
             return death;
         }
     }
-        public AudioClip Fireball
+    public AudioClip Fireball
     {
         get
         {
             return fireball;
         }
     }
-        public AudioClip Gameover
+    public AudioClip Gameover
     {
         get
         {
             return gameover;
         }
     }
-        public AudioClip Hit
+    public AudioClip Hit
     {
         get
         {
             return hit;
         }
     }
-        public AudioClip Level 
+    public AudioClip Level 
     {
         get
         {
             return level;
         }
     }
-        public AudioClip NewGame
+    public AudioClip NewGame
     {
         get
         {
             return newGame;
         }
     }
-        public AudioClip Rock
+    public AudioClip Rock
     {
         get
         {
             return rock;
         }
     }
-        public AudioClip TowerBuild 
+    public AudioClip TowerBuild 
     {
         get
         {
             return towerBuild;
         }
     }
-
+    public AudioClip Click
+    {
+        get
+        {
+            return click;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1323879747535950565
+--- !u!1 &1452141318112922552
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1381780625435175850}
-  - component: {fileID: 22413063695498118}
-  - component: {fileID: 7488126836901882497}
+  - component: {fileID: 1452141318112922553}
+  - component: {fileID: 1452141318112922554}
+  - component: {fileID: 3379121531907737779}
   m_Layer: 9
-  m_Name: KnightTower
+  m_Name: Castle
   m_TagString: tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1381780625435175850
+--- !u!4 &1452141318112922553
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323879747535950565}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.6197433, y: 0.8588673, z: 0}
+  m_GameObject: {fileID: 1452141318112922552}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.070827946, y: 3.54, z: 0.69921875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &22413063695498118
+--- !u!212 &1452141318112922554
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323879747535950565}
+  m_GameObject: {fileID: 1452141318112922552}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -69,25 +69,25 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1977085225
   m_SortingLayer: 1
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: b7d599a84b0fb4498b9bcd538ec5e28b, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 764e6dfe03e52412bbc5d428522fa9a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.7066667, y: 1.7066667}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7488126836901882497
+--- !u!114 &3379121531907737779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1323879747535950565}
+  m_GameObject: {fileID: 1452141318112922552}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52621ab68c256fb4d97bc6a4ae67417c, type: 3}
@@ -96,6 +96,6 @@ MonoBehaviour:
   timeBetweenAttacks: 1
   attackRadius: 2
   projectileSpeed: 5
-  projectile: {fileID: -2923969401518114751, guid: a2dee0af32f4ee64d9c2c8a7fbabb70b,
+  projectile: {fileID: 5794832674770183604, guid: 63a20774627e63e4c84a0d112479bb1f,
     type: 3}
-  healthPoint: 100
+  healthPoint: 500

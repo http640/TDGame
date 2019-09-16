@@ -23,6 +23,9 @@ TextureImporter:
   - first:
       213: 2213731607469278391
     second: square
+  - first:
+      213: -5675617359671381013
+    second: scrollbarV
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -241,7 +244,7 @@ TextureImporter:
         width: 55
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,6 +252,27 @@ TextureImporter:
       bones: []
       spriteID: ad63f09a2bbabb24dae5d3f83bfc0791
       internalID: 2213731607469278391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: scrollbarV
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 1763
+        width: 76
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f186804c5e9ac9b4dad38d23128c2132
+      internalID: -5675617359671381013
       vertices: []
       indices: 
       edges: []

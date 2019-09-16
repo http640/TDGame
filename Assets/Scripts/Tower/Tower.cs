@@ -12,6 +12,8 @@ public class Tower : MonoBehaviour
     private float projectileSpeed = 5f;
     [SerializeField]
     private Projectile projectile;
+    [SerializeField]
+    private float healthPoint;
     private Enemy targetEnemy = null;
     private float attackCounter;
     private bool isAttacking = false;

@@ -32,7 +32,8 @@ public class GameManager : Singletons<GameManager>
     private int enemiesPerSpawn;
     [SerializeField]
     private GameObject spawnPoint;
-
+    [SerializeField]
+    private LevelInfo levelInfo;
 
     private int waveNumber = 0;
     private int totalMoney = 10;

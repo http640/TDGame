@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+public enum damageType
+{
+    range, melee
+};
+
 public class Enemy : MonoBehaviour
 {
     public float speed = 2f;
@@ -41,13 +46,18 @@ public class Enemy : MonoBehaviour
             if (target < myPath.PathSequence.Length)
             {
                 enemy.position = Vector2.MoveTowards(enemy.position, myPath.PathSequence[target].position, Time.deltaTime * speed);
-                if( Vector2.Distance(enemy.position , myPath.PathSequence[target].position) <0.1f)
+                /*if( Vector2.Distance(enemy.position , myPath.PathSequence[target].position) <0.1f)
                 {
                     print("current target = " + target);
                     if (target >= myPath.PathSequence.Length)
                         print("end of path");
                 }
-                previousPos = enemy.position.x;
+                previousPos = enemy.position.x;*/
+            }
+            if (enemy.position == myPath.PathSequence[target].position && target < myPath.PathSequence.Length - 1)
+            {
+                Debug.Log(target);
+                target ++;
             }
         }
     }
@@ -56,14 +66,16 @@ public class Enemy : MonoBehaviour
     {
         if (col.gameObject.tag == "path")
         {
-            target += 1;
+            //target += 1;
             //Debug.Log("target: " + target);
         }
         else if (col.gameObject.tag == "Finish")
         {
-            GameManager.Instance.RoundEscaped += 1;
-            GameManager.Instance.TotalEscaped += 1;
+            //GameManager.Instance.RoundEscaped += 1;
+            //GameManager.Instance.TotalEscaped += 1;
             //GameManager.Instance.UnregisterEnemy(this);
+            anim.SetBool("attack", true);
+            Debug.Log("animatoin played");
             GameManager.Instance.isWaveOver();
         }
         else if (col.gameObject.tag == "projectile")

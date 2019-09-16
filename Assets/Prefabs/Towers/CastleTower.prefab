@@ -98,3 +98,4 @@ MonoBehaviour:
   projectileSpeed: 5
   projectile: {fileID: -8123052604710133692, guid: 1a74ba9d2e2361f40bbd5c6ae91ad6bc,
     type: 3}
+  healthPoint: 100

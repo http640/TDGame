@@ -149,3 +149,4 @@ MonoBehaviour:
   newGame: {fileID: 8300000, guid: aa3fc62ea15bec049b95da22ccaf5048, type: 3}
   rock: {fileID: 8300000, guid: ededd1cfd86904c44a2ce0687e47e3ff, type: 3}
   towerBuild: {fileID: 8300000, guid: a3a419c33fce1fa47848250fd11b0cb6, type: 3}
+  click: {fileID: 8300000, guid: 421127f6c362b2e41ae84302538fa75a, type: 3}
